@@ -227,3 +227,10 @@
     transform: rotate(0deg);
   }
 }
+.menu {
+    display: flex;
+    justify-content: flex-end;
+    align-self: center;
+    align-items: center;
+    overflow: hidden;
+}

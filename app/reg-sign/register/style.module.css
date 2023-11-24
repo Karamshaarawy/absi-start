@@ -1,0 +1,38 @@
+.div {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding-bottom: 10%;
+    padding-top: 10%;
+    max-height: 350px;
+}
+
+.image {
+    width:25%;
+    max-width: 200px;
+    max-height: 200px;
+    height:25%
+}
+
+.form {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top:5%;
+}
+
+.formfield {
+    margin: 10px;
+    width: 100%;
+    max-width: 500px;
+}
+
+.input {
+    height: 3rem;
+}
+
+.button {
+width: 100%;
+max-width: 500px;
+height: 3rem;
+}

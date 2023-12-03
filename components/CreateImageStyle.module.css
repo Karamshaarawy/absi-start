@@ -1,0 +1,25 @@
+.frame {
+    width: 249px;
+    height: 250px;
+    flex-shrink: 0;
+    border-radius: 16px;
+    border: 4px solid #E1EAF0;
+    background: #FFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+}
+
+.text {
+    color: var(--primary-color, #179CFD);
+    text-align: center;
+    font-family: Segoe UI Variable;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-top:15px
+}

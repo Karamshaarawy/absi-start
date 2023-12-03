@@ -1,34 +1,19 @@
 "use client";
-import React from "react";
-import { Layout, Menu } from "antd";
-import { UserAddOutlined, UserOutlined } from "@ant-design/icons";
-import type { MenuProps } from "antd";
-import Link from "next/link";
+import Image from "next/image";
+import logo from "@/public/absi_logo_complete 3.png";
 import classes from "./page.module.css";
-
-const { Header, Content, Footer } = Layout;
-
-const homePageHeaderItems: MenuProps["items"] = [
-  {
-    label: <Link href="/reg-sign/signin"> Signin</Link>,
-    key: "signin1",
-    icon: <UserOutlined />,
-  },
-  {
-    label: <Link href="/reg-sign/register"> Register</Link>,
-    key: "register",
-    icon: <UserAddOutlined />,
-  },
-];
+import { useRouter } from "next/navigation";
 
 const HomePage = ({ children }: { children: React.ReactNode }) => {
+  const router = useRouter();
+  setTimeout(() => {
+    router.push("/reg-sign/signin");
+  }, 5000);
+
   return (
-    <Menu
-      className={classes.menu}
-      theme="light"
-      mode="horizontal"
-      items={homePageHeaderItems}
-    />
+    <div className={classes.startPage}>
+      <Image src={logo} alt="ABSI" />
+    </div>
   );
 };
 

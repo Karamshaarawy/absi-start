@@ -227,10 +227,9 @@
     transform: rotate(0deg);
   }
 }
-.menu {
-    display: flex;
-    justify-content: flex-end;
-    align-self: center;
-    align-items: center;
-    overflow: hidden;
+.startPage {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100vh;
 }

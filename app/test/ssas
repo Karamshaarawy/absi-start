@@ -1,0 +1,112 @@
+"use client";
+import React, { useState } from "react";
+import { Layout, Menu } from "antd";
+
+import Link from "next/link";
+import classes from "./homeStyle.module.css";
+import Image from "next/image";
+import Frame from "@/components/CreateFrame";
+import Frame1 from "@/components/UnlockFrame";
+import Home from "@/public/SVGs/teenyicons_home-outline.svg";
+import Contacts from "@/public/SVGs/contacts.svg";
+import Chats from "@/public/SVGs/chat.svg";
+import Settings from "@/public/SVGs/setting.svg";
+import Logout from "@/public/SVGs/logout.svg";
+import Modal from "@/components/Modal";
+
+const { Header, Content, Sider } = Layout;
+
+// const homePageHeaderItems: MenuProps["items"] = [
+//   {
+//     label: <Link href="/reg-sign/signin"> Signin</Link>,
+//     key: "signin1",
+//     icon: <UserOutlined />,
+//   },
+//   {
+//     label: <Link href="/reg-sign/register"> Register</Link>,
+//     key: "register",
+//     icon: <UserAddOutlined />,
+//   },
+// ];
+
+const HomePage = ({ children }: { children: React.ReactNode }) => {
+  const [showModal, setShowModal] = useState(false);
+  const modalHandle = () => {
+    setShowModal(true);
+  };
+
+  const modalClose = () => {
+    setShowModal(false);
+  };
+
+  return (
+    <>
+      {/* <Menu
+        className={classes.menu}
+        theme="light"
+        mode="horizontal"
+        items={homePageHeaderItems}
+      /> */}
+      <Layout>
+        <Sider
+          width={297}
+          style={{ minHeight: "100vh", background: "white" }}
+          className={classes.sider}
+        >
+          <Menu
+            theme="light"
+            mode="inline"
+            defaultSelectedKeys={["1"]}
+            items={[
+              {
+                key: "1",
+                icon: <Image src={Home} alt="Home" />,
+                label: <Link href="/"> Home</Link>,
+              },
+              {
+                key: "2",
+                icon: <Image src={Contacts} alt="Contacts" />,
+                label: <Link href="/contacts"> Contacts</Link>,
+              },
+              {
+                key: "3",
+                icon: <Image src={Chats} alt="chats" />,
+                label: <Link href="/chats"> Chat</Link>,
+              },
+            ]}
+          />
+          <Menu
+            theme="light"
+            mode="inline"
+            items={[
+              {
+                key: "1",
+                icon: <Image src={Settings} alt="settings" />,
+                label: <Link href="/settings"> Settings</Link>,
+              },
+              {
+                key: "2",
+                icon: <Image src={Logout} alt="logout" />,
+                label: <Link href="/"> Logout</Link>,
+              },
+            ]}
+          />
+        </Sider>
+
+        <Layout>
+          <div id="modal-container" className={classes.modalContainer}>
+            <Content className={classes.content}>
+              <div onClick={modalHandle}>
+                <Frame></Frame>
+              </div>
+              {showModal && <Modal onClose={modalClose} />}
+              <Frame1></Frame1>
+            </Content>
+          </div>
+        </Layout>
+      </Layout>
+    </>
+  );
+};
+
+export default HomePage;

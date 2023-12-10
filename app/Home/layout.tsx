@@ -13,7 +13,7 @@ import Logout from "@/public/SVGs/logout.svg";
 import Head from "next/head";
 import notification from "@/public/SVGs/notification.svg";
 
-const { Header, Content, Sider } = Layout;
+const { Content, Sider } = Layout;
 
 const inter = Inter({ subsets: ["latin"] });
 

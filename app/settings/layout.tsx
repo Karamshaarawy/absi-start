@@ -5,12 +5,14 @@ import Link from "next/link";
 
 import { Inter } from "next/font/google";
 import classes from "./homeStyle.module.css";
-import Home from "@/public/SVGs/teenyicons_home-outline.svg";
-import Contacts from "@/public/SVGs/contacts.svg";
-import Chats from "@/public/SVGs/chat.svg";
 import Settings from "@/public/SVGs/setting.svg";
 import Logout from "@/public/SVGs/logout.svg";
 import Head from "next/head";
+import editprofile from "@/public/SVGs/editprofile.svg";
+import changePassword from "@/public/SVGs/lock.svg";
+import language from "@/public/SVGs/language'.svg";
+import help from "@/public/SVGs/help.svg";
+import leftArrow from "@/public/SVGs/baclblack.svg";
 import notification from "@/public/SVGs/notification.svg";
 
 const { Header, Content, Sider } = Layout;
@@ -38,22 +40,17 @@ export default function RootLayout({
               <Menu
                 theme="light"
                 mode="inline"
-                defaultSelectedKeys={["1"]}
                 items={[
                   {
                     key: "1",
-                    icon: <Image src={Home} alt="Home" />,
-                    label: <Link href="/Home"> Home</Link>,
-                  },
-                  {
-                    key: "2",
-                    icon: <Image src={Contacts} alt="Contacts" />,
-                    label: <Link href="/Home/contacts"> Contacts</Link>,
-                  },
-                  {
-                    key: "3",
-                    icon: <Image src={Chats} alt="chats" />,
-                    label: <Link href="/Home/chats"> Chat</Link>,
+                    icon: (
+                      <Image
+                        style={{ fill: "black" }}
+                        src={leftArrow}
+                        alt="back to home"
+                      />
+                    ),
+                    label: <Link href="/Home"> Back to Home</Link>,
                   },
                 ]}
               />
@@ -63,9 +60,38 @@ export default function RootLayout({
                 items={[
                   {
                     key: "1",
-                    icon: <Image src={Settings} alt="settings" />,
-                    label: <Link href="/settings"> Settings</Link>,
+                    icon: <Image src={editprofile} alt="edit profile" />,
+                    label: (
+                      <Link href="/settings/editProfile"> Edit Profile</Link>
+                    ),
                   },
+                  {
+                    key: "2",
+                    icon: <Image src={changePassword} alt="change password" />,
+                    label: (
+                      <Link href="/settings/changePassword">
+                        Change Password
+                      </Link>
+                    ),
+                  },
+                  {
+                    key: "3",
+                    icon: <Image src={language} alt="language" />,
+                    label: <Link href="/settings/language"> Language</Link>,
+                  },
+                  {
+                    key: "4",
+                    icon: <Image src={help} alt="help" />,
+                    label: (
+                      <Link href="/settings/helpAndFAQs"> Help & FAQs</Link>
+                    ),
+                  },
+                ]}
+              />
+              <Menu
+                theme="light"
+                mode="inline"
+                items={[
                   {
                     key: "2",
                     icon: <Image src={Logout} alt="logout" />,

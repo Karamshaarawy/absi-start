@@ -7,6 +7,7 @@ import back from "@/public/SVGs/baclblack.svg";
 import { useState } from "react";
 import React from "react";
 import { useRouter } from "next/navigation";
+import Head from "next/head";
 
 const SubmitButton = ({ form }: { form: FormInstance }) => {
   const [submittable, setSubmittable] = React.useState(false);
@@ -96,7 +97,7 @@ export default function CreateText(props: any) {
           )}
         </div>
         <div>
-          <div>
+          <div style={{ display: "flex" }}>
             <div>
               <Form.Item name="viewOnly" valuePropName="checked">
                 <Checkbox defaultChecked>View Only</Checkbox>
@@ -114,8 +115,9 @@ export default function CreateText(props: any) {
               </Form.Item>
             </div>
           </div>
-          <div>
+          <div style={{ display: "flex" }}>
             <Form.Item
+              className={classes.fileName}
               name="fileName"
               rules={[
                 { required: true, message: "please enter the file name" },
@@ -123,7 +125,7 @@ export default function CreateText(props: any) {
             >
               <Input placeholder="Enter File Name" />
             </Form.Item>
-            <Form.Item>
+            <Form.Item className={classes.button}>
               <SubmitButton form={form} />
             </Form.Item>
           </div>

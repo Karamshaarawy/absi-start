@@ -1,19 +1,17 @@
 "use client";
-import { Form, Input, Layout, Menu } from "antd";
+import { Button, Form, Input, Layout, Menu } from "antd";
 import Image from "next/image";
 import Link from "next/link";
-
+import share from "@/public/SVGs/share2.svg";
 import { Inter } from "next/font/google";
 import classes from "./homeStyle.module.css";
-import Home from "@/public/SVGs/teenyicons_home-outline.svg";
-import Contacts from "@/public/SVGs/contacts.svg";
-import Chats from "@/public/SVGs/chat.svg";
-import Settings from "@/public/SVGs/setting.svg";
-import Logout from "@/public/SVGs/logout.svg";
 import Head from "next/head";
+import editprofile from "@/public/SVGs/editprofile.svg";
+import leftArrow from "@/public/SVGs/baclblack.svg";
 import notification from "@/public/SVGs/notification.svg";
+import InviteFriendButton from "@/components/InviteFriendButton";
 
-const { Header, Content, Sider } = Layout;
+const { Content, Sider } = Layout;
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -38,22 +36,17 @@ export default function RootLayout({
               <Menu
                 theme="light"
                 mode="inline"
-                defaultSelectedKeys={["1"]}
                 items={[
                   {
                     key: "1",
-                    icon: <Image src={Home} alt="Home" />,
-                    label: <Link href="/Home"> Home</Link>,
-                  },
-                  {
-                    key: "2",
-                    icon: <Image src={Contacts} alt="Contacts" />,
-                    label: <Link href="/Home/contacts"> Contacts</Link>,
-                  },
-                  {
-                    key: "3",
-                    icon: <Image src={Chats} alt="chats" />,
-                    label: <Link href="/Home/chats"> Chat</Link>,
+                    icon: (
+                      <Image
+                        style={{ fill: "black" }}
+                        src={leftArrow}
+                        alt="back to home"
+                      />
+                    ),
+                    label: <Link href="/settings"> Back to Settings</Link>,
                   },
                 ]}
               />
@@ -63,13 +56,18 @@ export default function RootLayout({
                 items={[
                   {
                     key: "1",
-                    icon: <Image src={Settings} alt="settings" />,
-                    label: <Link href="/settings"> Settings</Link>,
+                    icon: <Image src={editprofile} alt="edit profile" />,
+                    label: "Edit Profile",
                   },
+                ]}
+              />
+              <Menu
+                theme="light"
+                mode="inline"
+                items={[
                   {
-                    key: "2",
-                    icon: <Image src={Logout} alt="logout" />,
-                    label: <Link href="/"> Logout</Link>,
+                    key: "1",
+                    label: <InviteFriendButton />,
                   },
                 ]}
               />
@@ -86,6 +84,7 @@ export default function RootLayout({
                   </Form>
                   <Image src={notification} alt="notification" />
                 </div>
+
                 {children}
               </Content>
             </div>

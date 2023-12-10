@@ -1,0 +1,11 @@
+.container {
+    width: 871px;
+height: 549px;
+flex-shrink: 0;
+border-radius: 16px;
+border: 2px solid #E5E5E5;
+background: var(--light-fill-color-control-default, rgba(255, 255, 255, 0.70));
+display: flex;
+align-items: center;
+justify-content: center;
+}

@@ -9,11 +9,12 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import FetchData from "@/requests/log-reg/reg-otp";
 import exclam from "@/public/SVGs/exclamationcircle.svg";
+import resendOtp from "@/requests/log-reg/resendOtp";
 
 export default function OtpPage() {
   const [error, setError] = useState(null);
   const [isDisabled, setIsDisabled] = useState(false);
-  const [count, setCount] = useState(30);
+  const [count, setCount] = useState(60);
   const [data, setData] = useState("");
   const router = useRouter();
 
@@ -29,14 +30,27 @@ export default function OtpPage() {
     setData("Resend");
   }, [isDisabled, count]);
 
-  const handleClick = () => {
+  const resendOtpClickHandler = async () => {
     if (!isDisabled) {
       setIsDisabled((prevState) => !prevState);
     }
     setTimeout(() => {
       setIsDisabled(false);
-      setCount(count + 30);
+      setCount(count + 60);
     }, count * 1000);
+
+    const regEmail = localStorage.getItem("reg-email");
+
+    const resendEmailResponse = await resendOtp(regEmail);
+    if (resendEmailResponse.error) {
+      setError(resendEmailResponse.message);
+    } else {
+      for (let key in resendEmailResponse) {
+        console.log(resendEmailResponse[key]);
+        localStorage.setItem(`otp-${key}`, resendEmailResponse[key]);
+      }
+    }
+    console.log(resendEmailResponse);
   };
 
   const onFinish = async (values: any) => {
@@ -45,22 +59,25 @@ export default function OtpPage() {
 
     console.log(otp);
 
-    console.log(values.otpcode);
     const token = localStorage.getItem("reg-token");
     const response = await FetchData(otp, token);
     console.log(response);
 
-    if (response.statusCode !== 200) {
+    if (response.error) {
       setError(response.message);
     } else {
-      router.push("/");
+      for (let key in response) {
+        console.log(response[key]);
+        localStorage.setItem(`reg-${key}`, response[key]);
+      }
+      router.push("/Home");
     }
   };
 
   return (
     <div className={classes.body}>
       <Frame>
-        <Link className={classes.back} href="/reg-sign/signin">
+        <Link className={classes.back} href="/reg-sign/register">
           <ArrowLeftOutlined />
           Back
         </Link>
@@ -136,7 +153,7 @@ export default function OtpPage() {
             <Button
               className={classes.button}
               disabled={isDisabled}
-              onClick={handleClick}
+              onClick={resendOtpClickHandler}
             >
               {data}
             </Button>

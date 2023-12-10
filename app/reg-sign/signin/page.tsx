@@ -33,7 +33,10 @@ export default function SigninPage() {
     console.log(response);
 
     if (response.token) {
-      router.push("/");
+      for (let key in response) {
+        localStorage.setItem(`login-${key}`, response[key]);
+      }
+      router.push("/Home");
     } else {
       SetError("The Email Or Password you entered is incorrect");
     }

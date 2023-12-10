@@ -9,6 +9,9 @@ import Link from "next/link";
 import { useState } from "react";
 import Image from "next/image";
 import exclamcircle from "@/public/SVGs/exclamationcircle.svg";
+import { useDispatch } from "react-redux";
+import { registerThunk } from "@/store";
+import useThunk from "@/hooks/useThunk";
 
 export default function RegisterPage() {
   const [error, setError] = useState(null);
@@ -18,7 +21,10 @@ export default function RegisterPage() {
     console.log(values);
     const response = await fetchData(values, path);
     if (response.token) {
-      localStorage.setItem("reg-token", response.token);
+      for (let key in response) {
+        console.log(response[key]);
+        localStorage.setItem(`otp-${key}`, response[key]);
+      }
       router.push("/reg-sign/register/otp");
     } else {
       setError(response.message);
@@ -149,12 +155,12 @@ export default function RegisterPage() {
             />
           </Form.Item>
 
-          {error && (
+          {/* {error && (
             <p className={classes.error}>
               <Image src={exclamcircle} alt="exclamation" />
               {error}
             </p>
-          )}
+          )} */}
 
           <Form.Item className={classes.formfield}>
             <Button htmlType="submit" className={classes.button}>

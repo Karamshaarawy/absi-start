@@ -1,3 +1,2 @@
-export default function ContactsHome() {
-  return <div>this is contacts page</div>;
-}
+import { useSelector } from "react-redux";
+export default function ContactsHome(props: any) {}

@@ -27,6 +27,9 @@
   display:flex
 }
 
+
+
+
 .notification {
   position: fixed;
   right: 2%;
@@ -52,6 +55,17 @@ font-weight: 400;
 line-height: 20px; /* 142.857% */
 }
 
-.notification img {
-  cursor: pointer;
+.invite {
+  width: 261px;
+height: 60px;
+flex-shrink: 0;
+border-radius: 3px;
+background: #179CFD;
+color: #FFF;
+font-feature-settings: 'rclt' off;
+font-family: Segoe UI Variable;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 20px; /* 125% */
 }

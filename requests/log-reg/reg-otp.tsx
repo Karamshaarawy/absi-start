@@ -1,6 +1,6 @@
 export default async function RegOtp(values: any, token: any) {
   const response = await fetch(
-    `https://absi-apis.shelter-technology.com/Auth/verifyOTP/:${values.otpcode}`,
+    `https://absi-apis.shelter-technology.com/Auth/verifyOTP/${values}`,
     {
       method: "GET",
       headers: {

@@ -2,7 +2,6 @@
 import { Form, Input, Layout, Menu } from "antd";
 import Image from "next/image";
 import Link from "next/link";
-
 import { Inter } from "next/font/google";
 import classes from "./homeStyle.module.css";
 import Home from "@/public/SVGs/teenyicons_home-outline.svg";
